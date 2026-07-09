@@ -1,0 +1,50 @@
+seed: 42
+
+data:
+  dataset_name: hustep-lab/ViSEC
+  hf_split: train
+  audio_column: path
+  label_column: emotion
+  label_id_column: emotion_id
+  sample_rate: 16000
+  duration_seconds: 5.0
+  val_ratio: 0.2
+  test_ratio: 0.1
+  num_workers: 4
+  split_strategy: speaker_independent
+  speaker_column: speaker_id
+
+frontend:
+  type: cnn1d
+  channels: [64, 128, 256]
+  kernels: [10, 8, 4]
+  strides: [5, 4, 2]
+augmentation:
+  noise_prob: 0.2
+  gain_prob: 0.2
+  time_mask_prob: 0.2
+
+training:
+  batch_size: 16
+  epochs: 50
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  early_stopping_patience: 10
+  mixed_precision: true
+
+
+model:
+  hidden_dim: 256
+  num_heads: 4
+  num_layers: 3
+  feedforward_dim: 512
+  dropout: 0.1
+  classifier_dropout: 0.5
+  pooling: mean
+
+paths:
+  checkpoint_dir: checkpoints
+  best_checkpoint: checkpoints/best_model.pt
+  log_dir: runs/baseline_ser
+  output_dir: outputs

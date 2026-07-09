@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Generated directories
+checkpoints/
+outputs/
+runs/
+local_datasets/
+local_models/
+
+# TensorBoard
+events.out.tfevents.*
+
+# Logs
+*.log
+
+# HuggingFace cache
+CACHEDIR.TAG
+
+# Nested git repo
+git/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Environment
+.env
+.venv
+venv/
+
+
+# Dataset
+datasets
